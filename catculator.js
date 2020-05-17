@@ -1,78 +1,78 @@
 //SETUP
     let result = 0;
     let resultString = '0';
-    let catArray = [];
-    let i = 0; 
+    let catArray = [];//string of numbers
+    let catIndex = 0; 
     let currentOperation = [];
-    let e = 0;
+    let operatorIndex = 0;
     let operatorBoolean = true; //was last input an operator?
     let numberBoolean = false; //was last input a number?
 
    
     const catPressed = function(event){
-        if(catArray[i]===undefined){catArray[i]='';}
-        if(catArray[i]==='0'){catArray[i]=''}
-        if(currentOperation[e]==='equal'){return;}
+        if(catArray[catIndex]===undefined){catArray[catIndex]='';}
+        if(catArray[catIndex]==='0'){catArray[catIndex]=''}
+        if(currentOperation[operatorIndex]==='equal'){return;}
         switch(event.target.id){
             case 'J':
                 operatorBoolean = false;
-                catArray[i] += '0';
-                if(e===0){result = Number(catArray[i])}
+                catArray[catIndex] += '0';
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 numberBoolean = true;
                 break;
             case 'G':
                 operatorBoolean = false;
-                catArray[i] += '1';
+                catArray[catIndex] += '1';
                 numberBoolean = true;
-                if(e===0){result = Number(catArray[i])}
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 break;
             case 'H':
                 operatorBoolean = false;
-                catArray[i] += '2';
+                catArray[catIndex] += '2';
                 numberBoolean = true;
-                if(e===0){result = Number(catArray[i])}
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 break;
             case 'I':
                 operatorBoolean = false;
-                catArray[i] += '3';
+                catArray[catIndex] += '3';
                 numberBoolean = true;
-                if(e===0){result = Number(catArray[i])}
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 break;
             case 'D':
                 operatorBoolean = false;
-                catArray[i] += '4';
+                catArray[catIndex] += '4';
                 numberBoolean = true;
-                if(e===0){result = Number(catArray[i])}
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 break;
             case 'E':
                 operatorBoolean = false;
-                catArray[i] += '5';
+                catArray[catIndex] += '5';
                 numberBoolean = true;
-                if(e===0){result = Number(catArray[i])}
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 break;
             case 'F':
                 operatorBoolean = false;
-                catArray[i] += '6';
+                catArray[catIndex] += '6';
                 numberBoolean = true;
-                if(e===0){result = Number(catArray[i])}
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 break;
             case 'A':
                 operatorBoolean = false;
-                catArray[i] += '7';
+                catArray[catIndex] += '7';
                 numberBoolean = true;
-                if(e===0){result = Number(catArray[i])}
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 break;
             case 'B':
                 operatorBoolean = false;
-                catArray[i] += '8';
+                catArray[catIndex] += '8';
                 numberBoolean = true;
-                if(e===0){result = Number(catArray[i])}
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 break;
             case 'C':
                 operatorBoolean = false;
-                catArray[i] += '9';
+                catArray[catIndex] += '9';
                 numberBoolean = true;
-                if(e===0){result = Number(catArray[i])}
+                if(operatorIndex===0){result = Number(catArray[catIndex])}
                 break;
         }
         showResult();
@@ -86,98 +86,98 @@
         switch(event.target.id){
             case 'plus':
                 if(operatorBoolean){break;}
-                currentOperation[e] = 'plus';
+                currentOperation[operatorIndex] = 'plus';
                 operatorBoolean = true;
-                if(catArray.length===1){resultString = catArray[i]}
-                i++;
-                e++;
+                if(catArray.length===1){resultString = catArray[catIndex]}
+                catIndex++;
+                operatorIndex++;
                 numberBoolean = false;
                 screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplusp"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
                 break;
             case 'minus':
                 if(operatorBoolean){break;}
-                currentOperation[e] = 'minus';
+                currentOperation[operatorIndex] = 'minus';
                 operatorBoolean = true;
-                if(catArray.length===1){resultString = catArray[i]}
-                i++;
-                e++;
+                if(catArray.length===1){resultString = catArray[catIndex]}
+                catIndex++;
+                operatorIndex++;
                 numberBoolean = false;
                 screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminusp"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
                 break;
             case 'mul':
                 if(operatorBoolean){break;}
-                currentOperation[e] = 'mul';
+                currentOperation[operatorIndex] = 'mul';
                 operatorBoolean = true;
-                if(catArray.length===1){resultString = catArray[i]}
-                i++;
-                e++;
+                if(catArray.length===1){resultString = catArray[catIndex]}
+                catIndex++;
+                operatorIndex++;
                 numberBoolean = false;
                 screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmulp"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
                 break;
             case 'div':
                 if(operatorBoolean){break;}
-                currentOperation[e] = 'div';
+                currentOperation[operatorIndex] = 'div';
                 operatorBoolean = true;
-                if(catArray.length===1){resultString = catArray[i]}
-                i++;
-                e++;
+                if(catArray.length===1){resultString = catArray[catIndex]}
+                catIndex++;
+                operatorIndex++;
                 numberBoolean = false;
                 screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddivp"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
                 break;
             case 'equal':
-                switch(currentOperation[e-1]){
+                switch(currentOperation[operatorIndex-1]){
                     case 'plus':
-                        result += Number(catArray[i])
+                        result += Number(catArray[catIndex])
                         resultString = String(result);
                         break;
                     case 'minus':
-                        result -= Number(catArray[i])
+                        result -= Number(catArray[catIndex])
                         resultString = String(result);
                         break;
                     case 'mul':
-                        result *= Number(catArray[i])
+                        result *= Number(catArray[catIndex])
                         resultString = String(result);
                         break;
                     case 'div':
-                        result /= Number(catArray[i])
+                        result /= Number(catArray[catIndex])
                         resultString = String(result);
                         break;
                 }
                 numberBoolean = false;
-                currentOperation[e] = 'equal';
+                currentOperation[operatorIndex] = 'equal';
                 screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequalp"></img>';
                 break;
             case 'ce':
-                catArray[i]='0';
+                catArray[catIndex]='0';
                 break;
             case 'cc':
                 result = 0;
                 resultString = '0';
                 catArray.length = 0;
-                i = 0;
+                catIndex = 0;
                 currentOperation.length = 0;
-                e = 0;
+                operatorIndex = 0;
                 operatorBoolean = true;
                 numberBoolean = false;
                 screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
                 break;
             case 'del':
-                catArray[i] = catArray[i].slice(0,i-1);
-                if(catArray[i].length === 0){catArray[i] = '0';}
+                catArray[catIndex] = catArray[catIndex].slice(0,catIndex-1);
+                if(catArray[catIndex].length === 0){catArray[catIndex] = '0';}
                 break;
             case 'inv':
-                if(operatorBoolean && currentOperation[e]!=='equal'){break;}
+                if(operatorBoolean && currentOperation[operatorIndex]!=='equal'){break;}
                 if(!numberBoolean){
                     result *=-1;
                     resultString = String(result);
                     console.log('result: ', resultString);}
                 else{
-                    catArray[i] = String(Number(catArray[i])*-1)}
+                    catArray[catIndex] = String(Number(catArray[catIndex])*-1)}
                 break;
             case 'dot':
                 operatorBoolean = false;
-                if(catArray[i]===undefined){catArray[i] = '0.';}else{catArray[i] += '.';}
-                if(currentOperation[e]==='equal'){console.log('not yet implemented')}
+                if(catArray[catIndex]===undefined){catArray[catIndex] = '0.';}else{catArray[catIndex] += '.';}
+                if(currentOperation[operatorIndex]==='equal'){console.log('not yet implemented')}
                 break;
         }
         showResult();
@@ -219,7 +219,7 @@
     const showResult = function(){
         if(numberBoolean){
             catresult.innerHTML = '';
-            for(c of catArray[i]){
+            for(c of catArray[catIndex]){
                 switch(c){
                     case '0':
                         catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="J"></img>'+catresult.innerHTML;
@@ -261,7 +261,7 @@
             }
             
         }
-        if(operatorBoolean||currentOperation[e]==='equal'){
+        if(operatorBoolean||currentOperation[operatorIndex]==='equal'){
             catresult.innerHTML = '';
             for(c of resultString){
                 switch(c){
