@@ -219,9 +219,9 @@ var opPressed = function (event) {
         case 'cc':
             result = 0;
             resultString = '0';
-            array_Of_OperaNDs = [""]; //&&&&
+            array_Of_OperaNDs = [""];
             current_OperaND = 0;
-            listOfOperators = [""]; //&&&&
+            listOfOperators = [""];
             current_OperaTOR = 0;
             wasLastInputAnOperator = true;
             wasLastInputANumber = false;
@@ -310,6 +310,33 @@ if (hash) {
         results.forEach(function (e) { e.style.color = "transparent"; e.style.backgroundSize = "90%"; e.style.width = "10rem"; });
     });
 }
+//DRAG LCD
+var catResultDraggeable = document.getElementById('catresultcontainer');
+var scrollHandlers = document.querySelectorAll('.scroll div');
+scrollHandlers[0].addEventListener("click", function () {
+    catResultDraggeable === null || catResultDraggeable === void 0 ? void 0 : catResultDraggeable.scrollBy({
+        top: 0,
+        left: -200,
+        behavior: 'smooth'
+    });
+});
+scrollHandlers[1].addEventListener("click", function () {
+    catResultDraggeable === null || catResultDraggeable === void 0 ? void 0 : catResultDraggeable.scrollBy({
+        top: 0,
+        left: 200,
+        behavior: 'smooth'
+    });
+});
+var getCatResultWidth = function (number) {
+    var catResultWidth = document.querySelector("#catresult");
+    if (catResultWidth) {
+        catResultWidth.style.width = 10 + 10 * number + "rem";
+        if (number < 7) {
+            catResultWidth.style.width = 70 + "rem";
+        }
+        catResultDraggeable === null || catResultDraggeable === void 0 ? void 0 : catResultDraggeable.scrollTo(100000000, 0);
+    }
+};
 //SCREEN
 var catresultConstructor = function (c) {
     if (catresult) {
@@ -357,17 +384,46 @@ var catresult = document.querySelector('#catresult');
 var showResult = function () {
     if (wasLastInputANumber && catresult) {
         catresult.innerHTML = '';
-        for (var _i = 0, _a = array_Of_OperaNDs[current_OperaND]; _i < _a.length; _i++) {
+        var crop = false;
+        var float = 0;
+        for (var _i = 0, _a = array_Of_OperaNDs[current_OperaND].split(''); _i < _a.length; _i++) {
             var c = _a[_i];
+            if (crop === true) {
+                float++;
+            }
+            ;
+            if (c === ".") {
+                crop = true;
+            }
+            ;
             catresultConstructor(c);
+            if (float === 2) {
+                break;
+            }
         }
+        getCatResultWidth(array_Of_OperaNDs[current_OperaND].split('').length);
     }
     if ((wasLastInputAnOperator || listOfOperators[current_OperaTOR] === 'equal') && catresult) {
         catresult.innerHTML = '';
-        for (var _b = 0, resultString_1 = resultString; _b < resultString_1.length; _b++) {
-            var c = resultString_1[_b];
+        var crop = false;
+        var float = 0;
+        for (var _b = 0, _c = resultString.split(''); _b < _c.length; _b++) {
+            var c = _c[_b];
+            if (crop === true) {
+                float++;
+            }
+            ;
+            if (c === ".") {
+                crop = true;
+            }
+            ;
             catresultConstructor(c);
+            if (float === 2) {
+                break;
+            }
         }
+        var stringLength = resultString.indexOf(".") !== -1 ? resultString.indexOf(".") + 2 : resultString.split('').length; //escaping multiple float points
+        getCatResultWidth(stringLength);
     }
 };
 showResult();

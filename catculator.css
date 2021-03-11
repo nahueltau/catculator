@@ -58,10 +58,22 @@ body{
             text-align: right;
         }
         #catresultcontainer{
+            position: relative;
             height: 12rem;
             margin:4rem 3rem 5rem 2rem;
-            overflow: hidden;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            
         }
+    /*     #catresultcontainer::after{
+            content: "";
+            top: 1rem;
+            bottom: 3rem;
+            left: 3rem;
+            width: 10rem;
+            background-image: linear-gradient(90deg, #99ddc8,transparent);
+            position: absolute;            
+        } */
         #belowcats{
             position: absolute;
             right: 4rem;
@@ -146,7 +158,27 @@ body{
         .I{width: 10rem; height: 10rem;background: url(buttons/3.png);background-size: 90%;background-repeat: no-repeat;}
         .J{width: 10rem; height: 10rem;background: url(buttons/0.png);background-size: 90%;background-repeat: no-repeat;}
 
-        #catresult .result{margin:.5rem;display: block;float:right;font-size: 8rem;color: transparent;}
+        #catresult{
+          
+            width: 70rem;
+        }
+        .scroll{
+            font-size: 8rem;
+            position: absolute;
+            left: 2rem;
+            bottom: 0rem;
+            display: flex;
+            flex-direction: row;
+        }
+        .scroll div{
+            cursor: pointer;
+            margin: 0 1rem;
+            transition: color.5s;
+        }
+        .scroll div:hover{
+            color: black;
+        }
+        #catresult .result{margin:.5rem 0.2rem;display: block;float:right;font-size: 8rem;color: transparent;}
         .dot,.inv{
         font-size: 9rem;
         float: right;

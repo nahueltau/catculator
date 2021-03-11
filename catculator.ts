@@ -164,7 +164,9 @@
                 wasLastInputANumber = false;
                 listOfOperators[current_OperaTOR] = 'equal';
                 clearLcdOpColors();
-                if(lcdequal){lcdequal.style.color = "black";}  
+        
+                
+                if(lcdequal){lcdequal.style.color = "black";}
                 break;
             case 'ce':
                 array_Of_OperaNDs[current_OperaND]='0';
@@ -172,9 +174,9 @@
             case 'cc':
                 result = 0;
                 resultString = '0';
-                array_Of_OperaNDs = [""];//&&&&
+                array_Of_OperaNDs = [""];
                 current_OperaND = 0;
-                listOfOperators = [""];//&&&&
+                listOfOperators = [""];
                 current_OperaTOR = 0;
                 wasLastInputAnOperator = true;
                 wasLastInputANumber = false;
@@ -198,7 +200,9 @@
                 if(listOfOperators[current_OperaTOR]==='equal'){console.log('not yet implemented')}
                 break;
         }
+
         showResult();
+       
     }
     //button animation
     const buttons:any= document.querySelectorAll(".buttons");
@@ -234,15 +238,40 @@
     hash.addEventListener("mouseover",()=>{
         let buttons:any = document.querySelectorAll(".cat");
         let results:any = document.querySelectorAll(".result");
-        buttons.forEach((e:any)=>{e.style.color ="white";e.style.backgroundSize="0%";})
-        results.forEach((e:any)=>{e.style.color ="white";e.style.backgroundSize="0%";e.style.width = "auto"})
+        buttons.forEach((e:HTMLElement)=>{e.style.color ="white";e.style.backgroundSize="0%";})
+        results.forEach((e:HTMLElement)=>{e.style.color ="white";e.style.backgroundSize="0%";e.style.width = "auto"})
     })
     hash.addEventListener("mouseout",()=>{
         let buttons:any = document.querySelectorAll(".cat");
         let results:any = document.querySelectorAll(".result");
-        buttons.forEach((e:any)=>{e.style.color ="transparent";e.style.backgroundSize="75%";})
-        results.forEach((e:any)=>{e.style.color ="transparent";e.style.backgroundSize="90%";e.style.width = "10rem"})
+        buttons.forEach((e:HTMLElement)=>{e.style.color ="transparent";e.style.backgroundSize="75%";})
+        results.forEach((e:HTMLElement)=>{e.style.color ="transparent";e.style.backgroundSize="90%";e.style.width = "10rem"})
     })}
+    //DRAG LCD
+    const catResultDraggeable:HTMLElement|null = document.getElementById('catresultcontainer');
+    const scrollHandlers:NodeList|null =  document.querySelectorAll('.scroll div');
+    scrollHandlers[0].addEventListener("click",()=>{catResultDraggeable?.scrollBy({
+        top: 0,
+        left: -200,
+        behavior: 'smooth'
+      })});
+    scrollHandlers[1].addEventListener("click",()=>{catResultDraggeable?.scrollBy({
+        top: 0,
+        left: 200,
+        behavior: 'smooth'
+      })});
+    let getCatResultWidth = (number:number)=>{
+        let catResultWidth:HTMLElement|null = document.querySelector("#catresult");
+        if(catResultWidth){
+            
+            catResultWidth.style.width =10+10*number+"rem";
+            if(number<7){
+                catResultWidth.style.width =70+"rem";
+            }
+            catResultDraggeable?.scrollTo(100000000,0);
+        }
+ 
+    }
     //SCREEN
     const catresultConstructor = (c:string)=>{
         if(catresult){
@@ -290,18 +319,32 @@
     const showResult = function(){
         if(wasLastInputANumber && catresult){
             catresult.innerHTML = '';
-            for(let c of array_Of_OperaNDs[current_OperaND]){
+            let crop:boolean=false;
+            let float:number=0;
+            for(let c of array_Of_OperaNDs[current_OperaND].split('')){
+                if(crop===true){float++};
+                if(c==="."){crop=true;};
                 catresultConstructor(c);
+                if(float===2){break;}
             }
-            
+            getCatResultWidth(array_Of_OperaNDs[current_OperaND].split('').length);
         }
         if((wasLastInputAnOperator||listOfOperators[current_OperaTOR]==='equal')&& catresult){
             catresult.innerHTML = '';
-            for(let c of resultString){
+            let crop:boolean=false;
+            let float:number=0;
+            for(let c of resultString.split('')){
+                if(crop===true){float++};
+                if(c==="."){crop=true;};
                 catresultConstructor(c);
+                if(float===2){break;}
             }
-       
+
+            let stringLength = resultString.indexOf(".")!==-1 ? resultString.indexOf(".")+2 : resultString.split('').length;//escaping multiple float points
+            getCatResultWidth(stringLength);
         }
+
+       
     }
     showResult();
 
