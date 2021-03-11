@@ -1,312 +1,373 @@
 //SETUP
-    let result = 0;
-    let resultString = '0';
-    let catArray = [];//string of numbers
-    let catIndex = 0; 
-    let currentOperation = [];
-    let operatorIndex = 0;
-    let operatorBoolean = true; //was last input an operator?
-    let numberBoolean = false; //was last input a number?
-
-   
-    const catPressed = function(event){
-        if(catArray[catIndex]===undefined){catArray[catIndex]='';}
-        if(catArray[catIndex]==='0'){catArray[catIndex]=''}
-        if(currentOperation[operatorIndex]==='equal'){return;}
-        switch(event.target.id){
-            case 'J':
-                operatorBoolean = false;
-                catArray[catIndex] += '0';
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                numberBoolean = true;
-                break;
-            case 'G':
-                operatorBoolean = false;
-                catArray[catIndex] += '1';
-                numberBoolean = true;
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                break;
-            case 'H':
-                operatorBoolean = false;
-                catArray[catIndex] += '2';
-                numberBoolean = true;
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                break;
-            case 'I':
-                operatorBoolean = false;
-                catArray[catIndex] += '3';
-                numberBoolean = true;
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                break;
-            case 'D':
-                operatorBoolean = false;
-                catArray[catIndex] += '4';
-                numberBoolean = true;
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                break;
-            case 'E':
-                operatorBoolean = false;
-                catArray[catIndex] += '5';
-                numberBoolean = true;
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                break;
-            case 'F':
-                operatorBoolean = false;
-                catArray[catIndex] += '6';
-                numberBoolean = true;
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                break;
-            case 'A':
-                operatorBoolean = false;
-                catArray[catIndex] += '7';
-                numberBoolean = true;
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                break;
-            case 'B':
-                operatorBoolean = false;
-                catArray[catIndex] += '8';
-                numberBoolean = true;
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                break;
-            case 'C':
-                operatorBoolean = false;
-                catArray[catIndex] += '9';
-                numberBoolean = true;
-                if(operatorIndex===0){result = Number(catArray[catIndex])}
-                break;
-        }
-        showResult();
+var result = 0;
+var resultString = '0';
+var array_Of_OperaNDs = [""];
+var current_OperaND = 0;
+var listOfOperators = [""];
+var current_OperaTOR = 0;
+var wasLastInputAnOperator = true;
+var wasLastInputANumber = false;
+var catPressed = function (event) {
+    if (array_Of_OperaNDs[current_OperaND] === undefined) {
+        array_Of_OperaNDs[current_OperaND] = '';
     }
-
-    //OPERATORS
-    const screenop = document.querySelector('#screenop'); //operators on the display
-
-
-    const opPressed= function(event){
-        switch(event.target.id){
-            case 'plus':
-                if(operatorBoolean){break;}
-                currentOperation[operatorIndex] = 'plus';
-                operatorBoolean = true;
-                if(catArray.length===1){resultString = catArray[catIndex]}
-                catIndex++;
-                operatorIndex++;
-                numberBoolean = false;
-                screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplusp"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
-                break;
-            case 'minus':
-                if(operatorBoolean){break;}
-                currentOperation[operatorIndex] = 'minus';
-                operatorBoolean = true;
-                if(catArray.length===1){resultString = catArray[catIndex]}
-                catIndex++;
-                operatorIndex++;
-                numberBoolean = false;
-                screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminusp"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
-                break;
-            case 'mul':
-                if(operatorBoolean){break;}
-                currentOperation[operatorIndex] = 'mul';
-                operatorBoolean = true;
-                if(catArray.length===1){resultString = catArray[catIndex]}
-                catIndex++;
-                operatorIndex++;
-                numberBoolean = false;
-                screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmulp"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
-                break;
-            case 'div':
-                if(operatorBoolean){break;}
-                currentOperation[operatorIndex] = 'div';
-                operatorBoolean = true;
-                if(catArray.length===1){resultString = catArray[catIndex]}
-                catIndex++;
-                operatorIndex++;
-                numberBoolean = false;
-                screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddivp"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
-                break;
-            case 'equal':
-                switch(currentOperation[operatorIndex-1]){
-                    case 'plus':
-                        result += Number(catArray[catIndex])
-                        resultString = String(result);
-                        break;
-                    case 'minus':
-                        result -= Number(catArray[catIndex])
-                        resultString = String(result);
-                        break;
-                    case 'mul':
-                        result *= Number(catArray[catIndex])
-                        resultString = String(result);
-                        break;
-                    case 'div':
-                        result /= Number(catArray[catIndex])
-                        resultString = String(result);
-                        break;
-                }
-                numberBoolean = false;
-                currentOperation[operatorIndex] = 'equal';
-                screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequalp"></img>';
-                break;
-            case 'ce':
-                catArray[catIndex]='0';
-                break;
-            case 'cc':
-                result = 0;
-                resultString = '0';
-                catArray.length = 0;
-                catIndex = 0;
-                currentOperation.length = 0;
-                operatorIndex = 0;
-                operatorBoolean = true;
-                numberBoolean = false;
-                screenop.innerHTML = '<img src="buttons/emptybutton.png" alt="" id="lcddiv"><img src="buttons/emptybutton.png" alt="" id="lcdmul"><img src="buttons/emptybutton.png" alt="" id="lcdminus"><img src="buttons/emptybutton.png" alt="" id="lcdplus"><img src="buttons/emptybutton.png" alt="" id="lcdequal"></img>';
-                break;
-            case 'del':
-                catArray[catIndex] = catArray[catIndex].slice(0,catIndex-1);
-                if(catArray[catIndex].length === 0){catArray[catIndex] = '0';}
-                break;
-            case 'inv':
-                if(operatorBoolean && currentOperation[operatorIndex]!=='equal'){break;}
-                if(!numberBoolean){
-                    result *=-1;
-                    resultString = String(result);
-                    console.log('result: ', resultString);}
-                else{
-                    catArray[catIndex] = String(Number(catArray[catIndex])*-1)}
-                break;
-            case 'dot':
-                operatorBoolean = false;
-                if(catArray[catIndex]===undefined){catArray[catIndex] = '0.';}else{catArray[catIndex] += '.';}
-                if(currentOperation[operatorIndex]==='equal'){console.log('not yet implemented')}
-                break;
-        }
-        showResult();
+    if (array_Of_OperaNDs[current_OperaND] === '0') {
+        array_Of_OperaNDs[current_OperaND] = '';
     }
-    //button animation
-    const buttons = document.getElementsByClassName("buttons");
-    const buttonDown = (e)=>{
-      
-       if(e.target.className.includes("buttons")){
-        if(e.target.className.includes("cat")){
-        e.target.className = "buttons pressed cat";
-        }else{
-            e.target.className = "buttons pressed op";
-        }
-       }
+    if (listOfOperators[current_OperaTOR] === 'equal') {
+        return;
     }
-    const buttonUp = (e)=>{
-       if(e.target.className.includes("buttons")){
-        if(e.target.className.includes("cat")){
-            e.target.className = "buttons cat";
-            }else{
-                e.target.className = "buttons op";
+    switch (event.target.id) {
+        case 'J':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '0';
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
             }
-    }
-    }
-    for(button of buttons){
-        button.setAttribute('onmousedown','buttonDown(event)', {capture:true})
-        button.setAttribute('onmouseup','buttonUp(event)',  {capture:true})
-    }
-    //adding events
-    const catbuttons = document.querySelectorAll('.cat');
-    for(c of catbuttons){c.setAttribute('onclick','catPressed(event)')};
-    const operatorBooleanuttons = document.querySelectorAll('.op');
-    for(b of operatorBooleanuttons){b.setAttribute('onclick','opPressed(event)')};
-
-    //SCREEN
-
-    const catresult = document.querySelector('#catresult');
-    const showResult = function(){
-        if(numberBoolean){
-            catresult.innerHTML = '';
-            for(c of catArray[catIndex]){
-                switch(c){
-                    case '0':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="J"></img>'+catresult.innerHTML;
-                        break;
-                    case '1':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="G"></img>'+catresult.innerHTML;
-                        break;
-                    case '2':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="H"></img>'+catresult.innerHTML;
-                        break;
-                    case '3':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="I"></img>'+catresult.innerHTML;
-                        break;
-                    case '4':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="D"></img>'+catresult.innerHTML;
-                        break;
-                    case '5':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="E"></img>'+catresult.innerHTML;
-                        break;
-                    case '6':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="F"></img>'+catresult.innerHTML;
-                        break;
-                    case '7':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="A"></img>'+catresult.innerHTML;
-                        break;
-                    case '8':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="B"></img>'+catresult.innerHTML;
-                        break;
-                    case '9':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="C"></img>'+catresult.innerHTML;
-                        break;
-                    case '.':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="dot"></img>'+catresult.innerHTML;
-                        break;
-                    case '-':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="inv"></img>'+catresult.innerHTML;
-                        break;
-                }
+            wasLastInputANumber = true;
+            break;
+        case 'G':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '1';
+            wasLastInputANumber = true;
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
             }
-            
-        }
-        if(operatorBoolean||currentOperation[operatorIndex]==='equal'){
-            catresult.innerHTML = '';
-            for(c of resultString){
-                switch(c){
-                    case '0':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="J"></img>'+catresult.innerHTML;
-                        break;
-                    case '1':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="G"></img>'+catresult.innerHTML;
-                        break;
-                    case '2':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="H"></img>'+catresult.innerHTML;
-                        break;
-                    case '3':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="I"></img>'+catresult.innerHTML;
-                        break;
-                    case '4':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="D"></img>'+catresult.innerHTML;
-                        break;
-                    case '5':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="E"></img>'+catresult.innerHTML;
-                        break;
-                    case '6':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="F"></img>'+catresult.innerHTML;
-                        break;
-                    case '7':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="A"></img>'+catresult.innerHTML;
-                        break;
-                    case '8':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="B"></img>'+catresult.innerHTML;
-                        break;
-                    case '9':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="C"></img>'+catresult.innerHTML;
-                        break;
-                    case '.':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="dot"></img>'+catresult.innerHTML;
-                        break;
-                    case '-':
-                        catresult.innerHTML = '<img src="buttons/emptybutton.png" alt="" class="inv"></img>'+catresult.innerHTML;
-                        break;
-                }
+            break;
+        case 'H':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '2';
+            wasLastInputANumber = true;
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
             }
-       
-        }
+            break;
+        case 'I':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '3';
+            wasLastInputANumber = true;
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
+            }
+            break;
+        case 'D':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '4';
+            wasLastInputANumber = true;
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
+            }
+            break;
+        case 'E':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '5';
+            wasLastInputANumber = true;
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
+            }
+            break;
+        case 'F':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '6';
+            wasLastInputANumber = true;
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
+            }
+            break;
+        case 'A':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '7';
+            wasLastInputANumber = true;
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
+            }
+            break;
+        case 'B':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '8';
+            wasLastInputANumber = true;
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
+            }
+            break;
+        case 'C':
+            wasLastInputAnOperator = false;
+            array_Of_OperaNDs[current_OperaND] += '9';
+            wasLastInputANumber = true;
+            if (current_OperaTOR === 0) {
+                result = Number(array_Of_OperaNDs[current_OperaND]);
+            }
+            break;
     }
     showResult();
-
-
-  
+};
+//OPERATORS
+var lcdequal = document.querySelector('#lcdequal');
+var lcdplus = document.querySelector('#lcdplus');
+var lcddiv = document.querySelector('#lcddiv');
+var lcdminus = document.querySelector('#lcdminus');
+var lcdmul = document.querySelector('#lcdmul');
+var clearLcdOpColors = function () {
+    var color = "white";
+    if (lcdplus && lcddiv && lcdequal && lcdminus && lcdmul) {
+        lcdplus.style.color = color;
+        lcddiv.style.color = color;
+        lcdequal.style.color = color;
+        lcdminus.style.color = color;
+        lcdmul.style.color = color;
+    }
+};
+var opPressed = function (event) {
+    switch (event.target.id) {
+        case 'plus':
+            if (wasLastInputAnOperator) {
+                break;
+            }
+            listOfOperators[current_OperaTOR] = 'plus';
+            wasLastInputAnOperator = true;
+            if (array_Of_OperaNDs.length === 1) {
+                resultString = array_Of_OperaNDs[current_OperaND];
+            }
+            current_OperaND++;
+            current_OperaTOR++;
+            wasLastInputANumber = false;
+            clearLcdOpColors();
+            if (lcdplus) {
+                lcdplus.style.color = "black";
+            }
+            break;
+        case 'minus':
+            if (wasLastInputAnOperator) {
+                break;
+            }
+            listOfOperators[current_OperaTOR] = 'minus';
+            wasLastInputAnOperator = true;
+            if (array_Of_OperaNDs.length === 1) {
+                resultString = array_Of_OperaNDs[current_OperaND];
+            }
+            current_OperaND++;
+            current_OperaTOR++;
+            wasLastInputANumber = false;
+            clearLcdOpColors();
+            if (lcdminus) {
+                lcdminus.style.color = "black";
+            }
+            break;
+        case 'mul':
+            if (wasLastInputAnOperator) {
+                break;
+            }
+            listOfOperators[current_OperaTOR] = 'mul';
+            wasLastInputAnOperator = true;
+            if (array_Of_OperaNDs.length === 1) {
+                resultString = array_Of_OperaNDs[current_OperaND];
+            }
+            current_OperaND++;
+            current_OperaTOR++;
+            wasLastInputANumber = false;
+            clearLcdOpColors();
+            if (lcdmul) {
+                lcdmul.style.color = "black";
+            }
+            break;
+        case 'div':
+            if (wasLastInputAnOperator) {
+                break;
+            }
+            listOfOperators[current_OperaTOR] = 'div';
+            wasLastInputAnOperator = true;
+            if (array_Of_OperaNDs.length === 1) {
+                resultString = array_Of_OperaNDs[current_OperaND];
+            }
+            current_OperaND++;
+            current_OperaTOR++;
+            wasLastInputANumber = false;
+            clearLcdOpColors();
+            if (lcddiv) {
+                lcddiv.style.color = "black";
+            }
+            break;
+        case 'equal':
+            switch (listOfOperators[current_OperaTOR - 1]) {
+                case 'plus':
+                    result += Number(array_Of_OperaNDs[current_OperaND]);
+                    resultString = String(result);
+                    break;
+                case 'minus':
+                    result -= Number(array_Of_OperaNDs[current_OperaND]);
+                    resultString = String(result);
+                    break;
+                case 'mul':
+                    result *= Number(array_Of_OperaNDs[current_OperaND]);
+                    resultString = String(result);
+                    break;
+                case 'div':
+                    result /= Number(array_Of_OperaNDs[current_OperaND]);
+                    resultString = String(result);
+                    break;
+            }
+            wasLastInputANumber = false;
+            listOfOperators[current_OperaTOR] = 'equal';
+            clearLcdOpColors();
+            if (lcdequal) {
+                lcdequal.style.color = "black";
+            }
+            break;
+        case 'ce':
+            array_Of_OperaNDs[current_OperaND] = '0';
+            break;
+        case 'cc':
+            result = 0;
+            resultString = '0';
+            array_Of_OperaNDs = [""]; //&&&&
+            current_OperaND = 0;
+            listOfOperators = [""]; //&&&&
+            current_OperaTOR = 0;
+            wasLastInputAnOperator = true;
+            wasLastInputANumber = false;
+            break;
+        case 'del':
+            array_Of_OperaNDs[current_OperaND] = array_Of_OperaNDs[current_OperaND].slice(0, current_OperaND - 1);
+            if (array_Of_OperaNDs[current_OperaND].length === 0) {
+                array_Of_OperaNDs[current_OperaND] = '0';
+            }
+            break;
+        case 'inv':
+            if (wasLastInputAnOperator && listOfOperators[current_OperaTOR] !== 'equal') {
+                break;
+            }
+            if (!wasLastInputANumber) {
+                result *= -1;
+                resultString = String(result);
+                console.log('result: ', resultString);
+            }
+            else {
+                array_Of_OperaNDs[current_OperaND] = String(Number(array_Of_OperaNDs[current_OperaND]) * -1);
+            }
+            break;
+        case 'dot':
+            wasLastInputAnOperator = false;
+            if (array_Of_OperaNDs[current_OperaND] === undefined) {
+                array_Of_OperaNDs[current_OperaND] = '0.';
+            }
+            else {
+                array_Of_OperaNDs[current_OperaND] += '.';
+            }
+            if (listOfOperators[current_OperaTOR] === 'equal') {
+                console.log('not yet implemented');
+            }
+            break;
+    }
+    showResult();
+};
+//button animation
+var buttons = document.querySelectorAll(".buttons");
+var buttonDown = function (event) {
+    if (event.target.className.includes("buttons")) {
+        event.target.classList.add("pressed");
+    }
+};
+var buttonUp = function (event) {
+    if (event.target.className.includes("buttons")) {
+        event.target.classList.remove("pressed");
+    }
+};
+for (var _i = 0, buttons_1 = buttons; _i < buttons_1.length; _i++) {
+    var button = buttons_1[_i];
+    button.addEventListener('mousedown', buttonDown);
+    button.addEventListener('mouseup', buttonUp);
+}
+window.addEventListener("mouseup", function () {
+    var pressed_buttons = document.querySelectorAll(".pressed");
+    pressed_buttons.forEach(function (e) { e.classList.remove("pressed"); });
+});
+//adding events
+var catbuttons = document.querySelectorAll('.cat');
+for (var _a = 0, catbuttons_1 = catbuttons; _a < catbuttons_1.length; _a++) {
+    var c = catbuttons_1[_a];
+    c.addEventListener('click', catPressed);
+}
+;
+var operatorBooleanuttons = document.querySelectorAll('.op');
+for (var _b = 0, operatorBooleanuttons_1 = operatorBooleanuttons; _b < operatorBooleanuttons_1.length; _b++) {
+    var b = operatorBooleanuttons_1[_b];
+    b.addEventListener('click', opPressed);
+}
+;
+//VIEW NUMBERS
+var hash = document.querySelector("#view-numbers");
+if (hash) {
+    hash.addEventListener("mouseover", function () {
+        var buttons = document.querySelectorAll(".cat");
+        var results = document.querySelectorAll(".result");
+        buttons.forEach(function (e) { e.style.color = "white"; e.style.backgroundSize = "0%"; });
+        results.forEach(function (e) { e.style.color = "white"; e.style.backgroundSize = "0%"; e.style.width = "auto"; });
+    });
+    hash.addEventListener("mouseout", function () {
+        var buttons = document.querySelectorAll(".cat");
+        var results = document.querySelectorAll(".result");
+        buttons.forEach(function (e) { e.style.color = "transparent"; e.style.backgroundSize = "75%"; });
+        results.forEach(function (e) { e.style.color = "transparent"; e.style.backgroundSize = "90%"; e.style.width = "10rem"; });
+    });
+}
+//SCREEN
+var catresultConstructor = function (c) {
+    if (catresult) {
+        switch (c) {
+            case '0':
+                catresult.innerHTML = '<div class="J result">0</div>' + catresult.innerHTML;
+                break;
+            case '1':
+                catresult.innerHTML = '<div class="G result">1</div>' + catresult.innerHTML;
+                break;
+            case '2':
+                catresult.innerHTML = '<div class="H result">2</div>' + catresult.innerHTML;
+                break;
+            case '3':
+                catresult.innerHTML = '<div class="I result">3</div>' + catresult.innerHTML;
+                break;
+            case '4':
+                catresult.innerHTML = '<div class="D result">4</div>' + catresult.innerHTML;
+                break;
+            case '5':
+                catresult.innerHTML = '<div class="E result">5</div>' + catresult.innerHTML;
+                break;
+            case '6':
+                catresult.innerHTML = '<div class="F result">6</div>' + catresult.innerHTML;
+                break;
+            case '7':
+                catresult.innerHTML = '<div class="A result">7</div>' + catresult.innerHTML;
+                break;
+            case '8':
+                catresult.innerHTML = '<div class="B result">8</div>' + catresult.innerHTML;
+                break;
+            case '9':
+                catresult.innerHTML = '<div class="C result">9</div>' + catresult.innerHTML;
+                break;
+            case '.':
+                catresult.innerHTML = '<div class="dot">.</div>' + catresult.innerHTML;
+                break;
+            case '-':
+                catresult.innerHTML = '<div class="inv">-</div>' + catresult.innerHTML;
+                break;
+        }
+    }
+};
+var catresult = document.querySelector('#catresult');
+var showResult = function () {
+    if (wasLastInputANumber && catresult) {
+        catresult.innerHTML = '';
+        for (var _i = 0, _a = array_Of_OperaNDs[current_OperaND]; _i < _a.length; _i++) {
+            var c = _a[_i];
+            catresultConstructor(c);
+        }
+    }
+    if ((wasLastInputAnOperator || listOfOperators[current_OperaTOR] === 'equal') && catresult) {
+        catresult.innerHTML = '';
+        for (var _b = 0, resultString_1 = resultString; _b < resultString_1.length; _b++) {
+            var c = resultString_1[_b];
+            catresultConstructor(c);
+        }
+    }
+};
+showResult();

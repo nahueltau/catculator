@@ -11,8 +11,10 @@
 <body>
   
    <div id='catculator'>
+   
         <div id='lcd'>
-            <div id="title"><img src="buttons/title.png" alt="" > </div>
+          <div id="view-numbers"></div>
+            <div id="title">catculator 1.2 </div>
               
                         <div id="catresultcontainer">
               <div id='catresult'>
@@ -21,19 +23,11 @@
               </div>
 
               <div id='belowcats'>
-                <span>
-                <img src="buttons/emptybutton.png" alt="" id='lcdright'>
-                <img src="buttons/emptybutton.png" alt="" id='lcdleft'>
-                </span>
-              <span id='screenop'>
-                <img src="buttons/emptybutton.png" alt="" id='lcddiv'>
-                <img src="buttons/emptybutton.png" alt="" id='lcdmul'>
-                <img src="buttons/emptybutton.png" alt="" id='lcdminus'>
-                <img src="buttons/emptybutton.png" alt="" id='lcdplus'>
-                <img src="buttons/emptybutton.png" alt="" id='lcdequal'>
-              </span>
-                
-               
+                <div id='lcdequal'>=</div>
+                <div id='lcddiv'>÷</div>
+                <div id='lcdmul'>×</div>
+                <div id='lcdminus'>-</div>
+                <div id='lcdplus'>+</div>
               </div>
              
 
@@ -42,33 +36,33 @@
        
 
         <span id='catpad'>
-        <div class="gray-button"><div class="buttons op" id='ce'></div></div>
-        <div class="gray-button"><div class="buttons op" id='cc'></div></div>
-        <div class="gray-button"><div class="buttons op" id='del'></div></div>
-        <div class="red-button"><div class="buttons op" id='div'></div></div>
-        <div><div class="buttons cat" id='A' ></div></div>
-        <div><div class="buttons cat" id='B'></div></div>
-        <div><div class="buttons cat" id='C'></div></div>
-        <div class="red-button"><div class="buttons op" id='mul'></div></div>
-        <div><div class="buttons cat" id='D'></div></div>
-        <div><div class="buttons cat" id='E'></div></div>
-        <div><div class="buttons cat" id='F'></div></div>
-        <div class="red-button"><div class="buttons op" id='minus'></div></div>
-        <div><div class="buttons cat" id='G'></div></div>
-        <div><div class="buttons cat" id='H'></div></div>
-        <div><div class="buttons cat" id='I'></div></div>
-        <div class="red-button"><div class="buttons op" id='plus'></div></div>
-        <div  class="gray-button"><div class="buttons op" id='inv'></div></div>
-        <div><div class="buttons cat" id='J'></div></div>
-        <div class="gray-button"><div class="buttons op" id='dot'></div></div>
-        <div class="e-button"><div class="buttons op" id='equal'></div></div>
+        <div class="gray-button"><div class="buttons op" id='ce'>ce</div></div>
+        <div class="gray-button"><div class="buttons op" id='cc'>C</div></div>
+        <div class="gray-button"><div class="buttons op" id='del'>&lt;</div></div>
+        <div class="red-button"><div class="buttons op" id='div'>÷</div></div>
+        <div><div class="buttons cat" id='A' >7</div></div>
+        <div><div class="buttons cat" id='B'>8</div></div>
+        <div><div class="buttons cat" id='C'>9</div></div>
+        <div class="red-button"><div class="buttons op" id='mul'>×</div></div>
+        <div><div class="buttons cat" id='D'>4</div></div>
+        <div><div class="buttons cat" id='E'>5</div></div>
+        <div><div class="buttons cat" id='F'>6</div></div>
+        <div class="red-button"><div class="buttons op" id='minus'>-</div></div>
+        <div><div class="buttons cat" id='G'>1</div></div>
+        <div><div class="buttons cat" id='H'>2</div></div>
+        <div><div class="buttons cat" id='I'>3</div></div>
+        <div class="red-button"><div class="buttons op" id='plus'>+</div></div>
+        <div  class="gray-button"><div class="buttons op" id='inv'>+/-</div></div>
+        <div><div class="buttons cat" id='J'>0</div></div>
+        <div class="gray-button"><div class="buttons op" id='dot'>.</div></div>
+        <div class="e-button"><div class="buttons op" id='equal'>=</div></div>
         </span>
 
 
-
+   
    </div>
 
-
+   
 </body>
 <script src="catculator.js"></script>
 </html>
