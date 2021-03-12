@@ -232,21 +232,6 @@
     for(let c of catbuttons){c.addEventListener('click',catPressed)};
     const operatorBooleanuttons:any = document.querySelectorAll('.op');
     for(let b of operatorBooleanuttons){b.addEventListener('click',opPressed)};
-    //VIEW NUMBERS
-    let hash = document.querySelector("#view-numbers");
-    if(hash){
-    hash.addEventListener("mouseover",()=>{
-        let buttons:any = document.querySelectorAll(".cat");
-        let results:any = document.querySelectorAll(".result");
-        buttons.forEach((e:HTMLElement)=>{e.style.color ="white";e.style.backgroundSize="0%";})
-        results.forEach((e:HTMLElement)=>{e.style.color ="white";e.style.backgroundSize="0%";e.style.width = "auto"})
-    })
-    hash.addEventListener("mouseout",()=>{
-        let buttons:any = document.querySelectorAll(".cat");
-        let results:any = document.querySelectorAll(".result");
-        buttons.forEach((e:HTMLElement)=>{e.style.color ="transparent";e.style.backgroundSize="75%";})
-        results.forEach((e:HTMLElement)=>{e.style.color ="transparent";e.style.backgroundSize="90%";e.style.width = "10rem"})
-    })}
     //DRAG LCD
     const catResultDraggeable:HTMLElement|null = document.getElementById('catresultcontainer');
     const scrollHandlers:NodeList|null =  document.querySelectorAll('.scroll div');
@@ -272,6 +257,23 @@
         }
  
     }
+    //VIEW NUMBERS
+    let hash = document.querySelector("#view-numbers");
+    if(hash){
+    hash.addEventListener("mouseover",()=>{
+        let buttons:any = document.querySelectorAll(".cat");
+        let results:any = document.querySelectorAll(".result");
+        buttons.forEach((e:HTMLElement)=>{e.style.color ="white";e.style.backgroundSize="0%";});
+        results.forEach((e:HTMLElement)=>{e.style.color ="white";e.style.backgroundSize="0%";e.style.width = "auto"});
+        catResultDraggeable?.scrollTo(100000000,0);
+    })
+    hash.addEventListener("mouseout",()=>{
+        let buttons:any = document.querySelectorAll(".cat");
+        let results:any = document.querySelectorAll(".result");
+        buttons.forEach((e:HTMLElement)=>{e.style.color ="transparent";e.style.backgroundSize="75%";})
+        results.forEach((e:HTMLElement)=>{e.style.color ="transparent";e.style.backgroundSize="90%";e.style.width = "10rem"})
+    })}
+    
     //SCREEN
     const catresultConstructor = (c:string)=>{
         if(catresult){

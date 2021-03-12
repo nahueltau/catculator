@@ -294,22 +294,6 @@ for (var _b = 0, operatorBooleanuttons_1 = operatorBooleanuttons; _b < operatorB
     b.addEventListener('click', opPressed);
 }
 ;
-//VIEW NUMBERS
-var hash = document.querySelector("#view-numbers");
-if (hash) {
-    hash.addEventListener("mouseover", function () {
-        var buttons = document.querySelectorAll(".cat");
-        var results = document.querySelectorAll(".result");
-        buttons.forEach(function (e) { e.style.color = "white"; e.style.backgroundSize = "0%"; });
-        results.forEach(function (e) { e.style.color = "white"; e.style.backgroundSize = "0%"; e.style.width = "auto"; });
-    });
-    hash.addEventListener("mouseout", function () {
-        var buttons = document.querySelectorAll(".cat");
-        var results = document.querySelectorAll(".result");
-        buttons.forEach(function (e) { e.style.color = "transparent"; e.style.backgroundSize = "75%"; });
-        results.forEach(function (e) { e.style.color = "transparent"; e.style.backgroundSize = "90%"; e.style.width = "10rem"; });
-    });
-}
 //DRAG LCD
 var catResultDraggeable = document.getElementById('catresultcontainer');
 var scrollHandlers = document.querySelectorAll('.scroll div');
@@ -337,6 +321,23 @@ var getCatResultWidth = function (number) {
         catResultDraggeable === null || catResultDraggeable === void 0 ? void 0 : catResultDraggeable.scrollTo(100000000, 0);
     }
 };
+//VIEW NUMBERS
+var hash = document.querySelector("#view-numbers");
+if (hash) {
+    hash.addEventListener("mouseover", function () {
+        var buttons = document.querySelectorAll(".cat");
+        var results = document.querySelectorAll(".result");
+        buttons.forEach(function (e) { e.style.color = "white"; e.style.backgroundSize = "0%"; });
+        results.forEach(function (e) { e.style.color = "white"; e.style.backgroundSize = "0%"; e.style.width = "auto"; });
+        catResultDraggeable === null || catResultDraggeable === void 0 ? void 0 : catResultDraggeable.scrollTo(100000000, 0);
+    });
+    hash.addEventListener("mouseout", function () {
+        var buttons = document.querySelectorAll(".cat");
+        var results = document.querySelectorAll(".result");
+        buttons.forEach(function (e) { e.style.color = "transparent"; e.style.backgroundSize = "75%"; });
+        results.forEach(function (e) { e.style.color = "transparent"; e.style.backgroundSize = "90%"; e.style.width = "10rem"; });
+    });
+}
 //SCREEN
 var catresultConstructor = function (c) {
     if (catresult) {
