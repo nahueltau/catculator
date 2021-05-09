@@ -110,9 +110,7 @@ body{
             align-items: center;
             box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.664), -2px -2px 2px rgba(255, 255, 255, 0.76) ;
         }
-        .cat{
-            color: transparent;
-        }
+
         .red-button{
             background-image:linear-gradient(-45deg, rgb(23, 26, 199) -100%, rgb(220,178,185) 300% );
         }
@@ -128,28 +126,33 @@ body{
             box-shadow: 1px 1px 1px rgba(128, 128, 128, 0.664) inset, -1px -1px 1px rgba(255, 255, 255, 0.76) inset ;
         }
         /*BUTTON CATS*/
-        #A{ background: url(buttons/7.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-        #B{background: url(buttons/8.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-        #C{background: url(buttons/9.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-        #D{background: url(buttons/4.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-        #E{background: url(buttons/5.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-        #F{background: url(buttons/6.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-        #G{background: url(buttons/1.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-        #H{background: url(buttons/2.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-        #I{background: url(buttons/3.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-        #J{background: url(buttons/0.png);background-size: 75%; background-position: 10px 10px; background-repeat: no-repeat;}
-
+        #A{background: url(buttons/7.png);}
+        #B{background: url(buttons/8.png);}
+        #C{background: url(buttons/9.png);}
+        #D{background: url(buttons/4.png);}
+        #E{background: url(buttons/5.png);}
+        #F{background: url(buttons/6.png);}
+        #G{background: url(buttons/1.png);}
+        #H{background: url(buttons/2.png);}
+        #I{background: url(buttons/3.png);}
+        #J{background: url(buttons/0.png);}
+        .cat{
+            color: transparent;
+            background-size: 75% !important; 
+            background-position: 10px 10px !important; 
+            background-repeat: no-repeat !important;
+        }
         /*DISPALY CATS*/
-        .A{width: 10rem; height: 11rem;background: url(buttons/7.png);background-size: 90%;background-repeat: no-repeat;}
-        .B{width: 10rem; height: 11rem;background: url(buttons/8.png);background-size: 90%;background-repeat: no-repeat;}
-        .C{width: 10rem; height: 10rem;background: url(buttons/9.png);background-size: 90%;background-repeat: no-repeat;}
-        .D{width: 10rem; height: 10rem;background: url(buttons/4.png);background-size: 90%;background-repeat: no-repeat;}
-        .E{width: 10rem; height: 10rem;background: url(buttons/5.png);background-size: 90%;background-repeat: no-repeat;}
-        .F{width: 10rem; height: 10rem;background: url(buttons/6.png);background-size: 90%;background-repeat: no-repeat;}
-        .G{width: 10rem; height: 10rem;background: url(buttons/1.png);background-size: 90%;background-repeat: no-repeat;}
-        .H{width: 10rem; height: 10rem;background: url(buttons/2.png);background-size: 90%;background-repeat: no-repeat;}
-        .I{width: 10rem; height: 10rem;background: url(buttons/3.png);background-size: 90%;background-repeat: no-repeat;}
-        .J{width: 10rem; height: 10rem;background: url(buttons/0.png);background-size: 90%;background-repeat: no-repeat;}
+        .A{         width: 10rem; height: 11rem;background: url(buttons/7.png);}
+        .B{         width: 10rem; height: 11rem;background: url(buttons/8.png);}
+        .C{         width: 10rem; height: 10rem;background: url(buttons/9.png);}
+        .D{         width: 10rem; height: 10rem;background: url(buttons/4.png);}
+        .E{         width: 10rem; height: 10rem;background: url(buttons/5.png);}
+        .F{         width: 10rem; height: 10rem;background: url(buttons/6.png);}
+        .G{         width: 10rem; height: 10rem;background: url(buttons/1.png);}
+        .H{         width: 10rem; height: 10rem;background: url(buttons/2.png);}
+        .I{         width: 10rem; height: 10rem;background: url(buttons/3.png);}
+        .J{         width: 10rem; height: 10rem;background: url(buttons/0.png);}
 
         #catresult{
           
@@ -171,12 +174,33 @@ body{
         .scroll div:hover{
             color: black;
         }
-        #catresult .result{margin:.5rem 0.2rem;display: block;float:right;font-size: 8rem;color: transparent;}
+        .result{
+            background-size: 90% !important;
+            background-repeat: no-repeat !important;
+   
+            margin:.5rem 0.2rem;
+            display: block;
+            float:right;
+            font-size: 8rem;
+            color: transparent;
+
+        }
         .dot,.inv{
         font-size: 9rem;
         float: right;
         position: relative;
         bottom: 1rem;
+        color: white;
+        }
+        .hash-button{
+           color:white !important;
+           background-size:0% !important;
+            
+        }
+        .hash-result{
+            color :white !important;
+            background-size:0% !important;
+            width: auto !important;
         }
         #view-numbers{
             font-size: 4rem;
