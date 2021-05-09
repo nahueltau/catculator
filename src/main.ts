@@ -7,6 +7,7 @@ let b = 0;
 let current = "plus";
 const viewResult = (slot: number) => {
   catresult.innerHTML = renderCats(slot, catresult);
+  getCatResultWidth(String(slot).length)
 };
 const getResult = () => {
   a = calculate(a, b, current);
@@ -58,7 +59,7 @@ const invPressed = () => {
 const dotPressed = () => {
   //code
 };
-const [catResultDraggeable, catresult] = connectDOM(
+const [catResultContainer, catresult] = connectDOM(
   catPressed,
   opPressed,
   bigCPressed,
@@ -73,7 +74,7 @@ let getCatResultWidth = (number: number) => {
   if (number < 7) {
     catresult.style.width = 70 + "rem";
   }
-  catResultDraggeable?.scrollTo(100000000, 0);
+  catResultContainer?.scrollTo(100000000, 0);
 };
 
 viewResult(a);

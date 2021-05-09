@@ -46,6 +46,7 @@ export const connectDOM = (
   cc.addEventListener("click", bigCPressed);
   dot.addEventListener("click", dotPressed);
   del.addEventListener("click", delPressed);
+  
   hash?.addEventListener("mouseover", () => {
     const results: any | null = document.querySelectorAll(".result");
     catbuttons.forEach((e: HTMLElement) => {
